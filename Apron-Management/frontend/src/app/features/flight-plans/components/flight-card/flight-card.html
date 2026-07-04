@@ -1,0 +1,146 @@
+<div
+  class="rounded-2xl border border-slate-700 bg-slate-900 p-6 transition-all duration-300 hover:border-cyan-500 hover:shadow-xl hover:shadow-cyan-500/10">
+
+  <div class="flex items-center justify-between">
+
+    <div>
+
+      <h2 class="text-2xl font-bold text-white">
+
+        {{ flight.calculatedCallsign }}
+
+      </h2>
+
+      <p class="mt-1 text-sm text-slate-400">
+
+        {{ flight.carrier }}
+
+      </p>
+
+    </div>
+
+    <div>
+
+      <span
+        class="rounded-full bg-cyan-500/20 px-4 py-2 text-sm font-semibold text-cyan-300">
+
+        {{ flight.flightPlanType }}
+
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="mt-6 grid grid-cols-2 gap-5 md:grid-cols-4">
+
+    <div>
+
+      <p class="text-xs uppercase tracking-wider text-slate-500">
+
+        From
+
+      </p>
+
+      <p class="mt-1 text-lg font-semibold text-white">
+
+        {{ flight.adep }}
+
+      </p>
+
+    </div>
+
+    <div>
+
+      <p class="text-xs uppercase tracking-wider text-slate-500">
+
+        To
+
+      </p>
+
+      <p class="mt-1 text-lg font-semibold text-white">
+
+        {{ flight.ades }}
+
+      </p>
+
+    </div>
+
+    <div>
+
+      <p class="text-xs uppercase tracking-wider text-slate-500">
+
+        Aircraft
+
+      </p>
+
+      <p class="mt-1 text-lg font-semibold text-white">
+
+        {{ flight.aircraftType }}
+
+      </p>
+
+    </div>
+
+    <div>
+
+      <p class="text-xs uppercase tracking-wider text-slate-500">
+
+        Stand
+
+      </p>
+
+      <p class="mt-1 text-lg font-semibold text-cyan-400">
+
+        {{ flight.stand || 'Not Assigned' }}
+
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="mt-6 flex items-center justify-between border-t border-slate-700 pt-4">
+
+    <div>
+
+      <p class="text-xs text-slate-500">
+
+        Arrival
+
+      </p>
+
+      <p class="font-medium text-white">
+
+        {{ flight.sta | date:'dd MMM yyyy HH:mm' }}
+
+      </p>
+
+    </div>
+
+    <div>
+
+      <p class="text-xs text-slate-500">
+
+        Departure
+
+      </p>
+
+      <p class="font-medium text-white">
+
+        {{ flight.std | date:'dd MMM yyyy HH:mm' }}
+
+      </p>
+
+    </div>
+
+    <button
+      class="rounded-lg bg-cyan-500 px-5 py-2 text-sm font-semibold text-black transition hover:bg-cyan-400">
+
+      View Details
+
+    </button>
+
+  </div>
+
+</div>
