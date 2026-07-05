@@ -9,9 +9,12 @@ import { FlightPlan } from '../models/flight-plan.model';
 export class FlightPlansService {
   private readonly api = inject(Api);
 
-  getFlights() {
-    return this.api.get<FlightPlan[]>('/flight-plans');
-  }
+ getFlights(params?: any) {
+  return this.api.get<FlightPlan[]>(
+    '/flight-plans',
+    params,
+  );
+}
 
   getLinkedFlights(id: number) {
     return this.api.get<FlightPlan[]>(
@@ -19,17 +22,17 @@ export class FlightPlansService {
     );
   }
 
-  createFlight(body: FlightPlan) {
-    return this.api.post(
-      '/flight-plans',
-      body,
-    );
-  }
+  // createFlight(body: FlightPlan) {
+  //   return this.api.post(
+  //     '/flight-plans',
+  //     body,
+  //   );
+  // }
 
-  updateFlight(id: number, body: Partial<FlightPlan>) {
-    return this.api.patch(
-      `/flight-plans/${id}`,
-      body,
-    );
-  }
+  // updateFlight(id: number, body: Partial<FlightPlan>) {
+  //   return this.api.patch(
+  //     `/flight-plans/${id}`,
+  //     body,
+  //   );
+  // }
 }

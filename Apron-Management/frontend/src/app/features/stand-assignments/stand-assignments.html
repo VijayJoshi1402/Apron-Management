@@ -1,1 +1,139 @@
-<p>stand-assignments works!</p>
+<form
+  [formGroup]="assignmentForm"
+  (ngSubmit)="assignStand()"
+  class="space-y-6"
+>
+  <div>
+    <h1 class="text-3xl font-bold text-white">
+      Stand Assignment
+    </h1>
+
+    <p class="mt-2 text-slate-400">
+      Assign airport stands to flights.
+    </p>
+  </div>
+
+  <div class="rounded-2xl border border-slate-700 bg-slate-900 p-6">
+
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+
+      <div>
+        <label class="mb-2 block text-sm text-slate-400">
+          Flight
+        </label>
+
+        <select
+          formControlName="flightPlanId"
+          class="w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-white"
+        >
+
+          <option value="">
+            Select Flight
+          </option>
+
+          @for (flight of flights(); track flight.id) {
+
+            <option [value]="flight.id">
+
+              {{ flight.calculatedCallsign }}
+              ({{ flight.adep }} → {{ flight.ades }})
+
+            </option>
+
+          }
+
+        </select>
+      </div>
+
+      <div>
+
+        <label class="mb-2 block text-sm text-slate-400">
+          Stand
+        </label>
+
+        <select
+          formControlName="standCode"
+          class="w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-white"
+        >
+
+          <option value="">
+            Select Stand
+          </option>
+
+          @for (stand of stands(); track stand.stand) {
+
+            <option [value]="stand.stand">
+
+              {{ stand.stand }}
+              ({{ stand.terminal }})
+
+            </option>
+
+          }
+
+        </select>
+
+      </div>
+
+      <div>
+
+        <label class="mb-2 block text-sm text-slate-400">
+          From Time
+        </label>
+
+        <input
+          type="datetime-local"
+          formControlName="fromTime"
+          class="w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-white"
+        />
+
+      </div>
+
+      <div>
+
+        <label class="mb-2 block text-sm text-slate-400">
+          To Time
+        </label>
+
+        <input
+          type="datetime-local"
+          formControlName="toTime"
+          class="w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-white"
+        />
+
+      </div>
+
+    </div>
+
+    <div class="mt-6">
+
+      <label class="mb-2 block text-sm text-slate-400">
+        Remarks
+      </label>
+
+      <textarea
+        rows="4"
+        formControlName="remarks"
+        class="w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-white"
+      ></textarea>
+
+    </div>
+
+    <div class="mt-8 flex justify-end">
+
+      <button
+        type="submit"
+        class="rounded-xl bg-cyan-500 px-8 py-3 font-semibold text-black transition hover:bg-cyan-400"
+      >
+        Assign Stand
+      </button>
+
+    </div>
+
+  </div>
+
+</form>
+
+<app-assignment-table
+  [assignments]="assignments()">
+</app-assignment-table>

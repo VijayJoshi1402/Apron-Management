@@ -6,6 +6,7 @@ import { FlightPlansModule } from './flight-plans/flight-plans.module';
 import { StandAssignmentsModule } from './stand-assignments/stand-assignments.module';
 import { StandsModule } from './stands/stands.module';
 import { SeedModule } from './seed/seed.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -42,6 +43,8 @@ import { SeedModule } from './seed/seed.module';
     StandAssignmentsModule,
 
     SeedModule,
+
+    DashboardModule,
   ],
 })
 export class AppModule {}

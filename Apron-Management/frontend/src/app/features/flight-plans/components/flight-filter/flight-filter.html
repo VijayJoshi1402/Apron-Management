@@ -1,9 +1,46 @@
-<div class="rounded-xl bg-slate-900 border border-slate-700 p-5">
+<div class="rounded-2xl border border-slate-700 bg-slate-900 p-5">
 
-  <h2 class="text-lg font-semibold text-white">
+    <div class="grid gap-4 md:grid-cols-4">
 
-    Flight Search
+        <input
+            [(ngModel)]="search"
+            (input)="applyFilter()"
+            placeholder="Search Flight..."
+            class="rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-white">
 
-  </h2>
+        <select
+            [(ngModel)]="flightPlanType"
+            (change)="applyFilter()"
+            class="rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-white">
+
+            <option value="">
+                All Types
+            </option>
+
+            <option value="Arrival">
+                Arrival
+            </option>
+
+            <option value="Departure">
+                Departure
+            </option>
+
+        </select>
+
+        <input
+            type="date"
+            [(ngModel)]="originDate"
+            (change)="applyFilter()"
+            class="rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-white">
+
+        <button
+            (click)="applyFilter()"
+            class="rounded-xl bg-cyan-500 font-semibold text-black">
+
+            Search
+
+        </button>
+
+    </div>
 
 </div>

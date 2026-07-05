@@ -1,0 +1,91 @@
+<div class="mt-8 rounded-2xl border border-slate-700 bg-slate-900 overflow-hidden">
+
+    <div class="border-b border-slate-700 p-5">
+
+        <h2 class="text-xl font-semibold text-white">
+
+            Assignment History
+
+        </h2>
+
+    </div>
+
+    <table class="w-full">
+
+        <thead class="bg-slate-800">
+
+            <tr>
+
+                <th class="px-5 py-3 text-left text-slate-300">Flight</th>
+
+                <th class="px-5 py-3 text-left text-slate-300">Stand</th>
+
+                <th class="px-5 py-3 text-left text-slate-300">From</th>
+
+                <th class="px-5 py-3 text-left text-slate-300">To</th>
+
+                <th class="px-5 py-3 text-left text-slate-300">Remarks</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @for(item of assignments; track item.id){
+
+            <tr class="border-t border-slate-700">
+
+                <td class="px-5 py-4 text-white">
+
+                    {{item.flightPlanId}}
+
+                </td>
+
+                <td class="px-5 py-4 text-cyan-400">
+
+                    {{item.standCode}}
+
+                </td>
+
+                <td class="px-5 py-4 text-slate-300">
+
+                    {{item.fromTime | date:'dd MMM yyyy HH:mm'}}
+
+                </td>
+
+                <td class="px-5 py-4 text-slate-300">
+
+                    {{item.toTime | date:'dd MMM yyyy HH:mm'}}
+
+                </td>
+
+                <td class="px-5 py-4 text-slate-300">
+
+                    {{item.remarks}}
+
+                </td>
+
+            </tr>
+
+            }
+
+            @empty {
+
+            <tr>
+
+                <td colspan="5" class="py-10 text-center text-slate-500">
+
+                    No Stand Assignments Found
+
+                </td>
+
+            </tr>
+
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

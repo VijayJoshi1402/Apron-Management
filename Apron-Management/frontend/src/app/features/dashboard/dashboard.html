@@ -1,1 +1,104 @@
-<p>dashboard works!</p>
+<div class="space-y-8">
+
+    <div>
+
+        <h1 class="text-3xl font-bold text-white">
+
+            Aviation Dashboard
+
+        </h1>
+
+        <p class="mt-2 text-slate-400">
+
+            Airport Apron Management Overview
+
+        </p>
+
+    </div>
+
+    @if (loading()) {
+
+        <!-- <div class="rounded-2xl border border-slate-700 bg-slate-900 p-10 text-center">
+
+            <p class="text-slate-400">
+
+                Loading Dashboard...
+
+            </p>
+
+        </div> -->
+        <app-loading-spinner></app-loading-spinner>
+
+    } @else {
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+
+            <div class="rounded-2xl border border-slate-700 bg-slate-900 p-6">
+
+                <p class="text-slate-400">
+
+                    Total Flights
+
+                </p>
+
+                <h2 class="mt-4 text-4xl font-bold text-white">
+
+                    {{ totalFlights() }}
+
+                </h2>
+
+            </div>
+
+            <div class="rounded-2xl border border-slate-700 bg-slate-900 p-6">
+
+                <p class="text-slate-400">
+
+                    Arrivals
+
+                </p>
+
+                <h2 class="mt-4 text-4xl font-bold text-cyan-400">
+
+                    {{ arrivals() }}
+
+                </h2>
+
+            </div>
+
+            <div class="rounded-2xl border border-slate-700 bg-slate-900 p-6">
+
+                <p class="text-slate-400">
+
+                    Departures
+
+                </p>
+
+                <h2 class="mt-4 text-4xl font-bold text-emerald-400">
+
+                    {{ departures() }}
+
+                </h2>
+
+            </div>
+
+            <div class="rounded-2xl border border-slate-700 bg-slate-900 p-6">
+
+                <p class="text-slate-400">
+
+                    Available Stands
+
+                </p>
+
+                <h2 class="mt-4 text-4xl font-bold text-yellow-400">
+
+                    {{ availableStands() }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+    }
+
+</div>

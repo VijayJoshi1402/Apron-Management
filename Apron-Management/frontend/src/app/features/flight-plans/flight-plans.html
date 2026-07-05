@@ -1,1 +1,90 @@
-<p>flight-plans works!</p>
+<div class="space-y-6">
+
+    <div class="flex items-center justify-between">
+
+        <div>
+
+            <h1 class="text-3xl font-bold text-white">
+
+                Flight Plans
+
+            </h1>
+
+            <p class="mt-2 text-slate-400">
+
+                Search and manage airport flight plans.
+
+            </p>
+
+        </div>
+
+    </div>
+
+  <app-flight-filter
+    (filterChanged)="onFilterChanged($event)">
+</app-flight-filter>
+
+    @if(loading()){
+
+        <!-- <div class="rounded-2xl border border-slate-700 bg-slate-900 py-20 text-center">
+
+            <p class="text-slate-400">
+
+                Loading Flights...
+
+            </p>
+
+        </div> -->
+           <app-loading-spinner></app-loading-spinner>
+
+    }
+
+    @else {
+
+        @if(flights().length){
+
+            <div class="grid gap-6">
+
+               @for(flight of flights(); track flight.id){
+
+                    <app-flight-card
+
+                        [flight]="flight"
+
+                        [expanded]="expandedFlightId() === flight.id"
+
+                        [linkedFlights]="expandedFlightId() === flight.id ? linkedFlights() : []"
+
+                        (viewDetails)="viewDetails($event)">
+
+                    </app-flight-card>
+
+                }
+
+            </div>
+
+        }
+
+        @else {
+
+            <div class="rounded-2xl border border-dashed border-slate-700 bg-slate-900 py-20 text-center">
+
+                <h2 class="text-xl font-semibold text-white">
+
+                    No Flights Available
+
+                </h2>
+
+                <p class="mt-2 text-slate-400">
+
+                    Flight data will appear here after importing the JSON file.
+
+                </p>
+
+            </div>
+
+        }
+
+    }
+
+</div>

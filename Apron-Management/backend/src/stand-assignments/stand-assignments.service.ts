@@ -55,25 +55,23 @@ export class StandAssignmentsService {
       throw new NotFoundException('Stand not found');
     }
 
-    const overlap = await this.assignmentRepository
-      .createQueryBuilder('assignment')
-      .where('assignment.standCode = :standCode', {
-        standCode: dto.standCode,
-      })
-      .andWhere(
-        `
-        (
-          :fromTime < assignment.toTime
-          AND
-          :toTime > assignment.fromTime
-        )
-      `,
-        {
-          fromTime: dto.fromTime,
-          toTime: dto.toTime,
-        },
-      )
-      .getOne();
+  const overlap = await this.assignmentRepository
+  .createQueryBuilder('assignment')
+  .where('assignment.standCode = :standCode', {
+    standCode: dto.standCode,
+  })
+  .andWhere(
+    `(
+      :fromTime < "assignment"."toTime"
+      AND
+      :toTime > "assignment"."fromTime"
+    )`,
+    {
+      fromTime: dto.fromTime,
+      toTime: dto.toTime,
+    },
+  )
+  .getOne();
 
     if (overlap) {
       throw new BadRequestException(

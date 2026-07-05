@@ -1,0 +1,149 @@
+<div class="rounded-2xl border border-slate-700 bg-slate-900 p-6">
+
+    <div class="flex items-center justify-between">
+
+        <div>
+
+            <h2 class="text-2xl font-bold text-white">
+
+                {{flight.calculatedCallsign}}
+
+            </h2>
+
+            <p class="text-slate-400">
+
+                {{flight.carrier}} {{flight.flightNumber}}
+
+            </p>
+
+        </div>
+
+        <span
+            class="rounded-full bg-cyan-500/20 px-4 py-2 text-cyan-300">
+
+            {{flight.flightPlanType}}
+
+        </span>
+
+    </div>
+
+    <div class="mt-8 grid grid-cols-2 gap-5 md:grid-cols-4">
+
+        <div>
+
+            <p class="text-xs text-slate-500">
+
+                Departure
+
+            </p>
+
+            <p class="text-lg font-semibold text-white">
+
+                {{flight.adep}}
+
+            </p>
+
+        </div>
+
+        <div>
+
+            <p class="text-xs text-slate-500">
+
+                Arrival
+
+            </p>
+
+            <p class="text-lg font-semibold text-white">
+
+                {{flight.ades}}
+
+            </p>
+
+        </div>
+
+        <div>
+
+            <p class="text-xs text-slate-500">
+
+                Aircraft
+
+            </p>
+
+            <p class="text-lg font-semibold text-white">
+
+                {{flight.aircraftType}}
+
+            </p>
+
+        </div>
+
+        <div>
+
+            <p class="text-xs text-slate-500">
+
+                Stand
+
+            </p>
+
+            <p class="text-lg font-semibold text-cyan-400">
+
+                {{flight.stand || 'Not Assigned'}}
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="mt-8">
+
+        <h3 class="mb-4 text-xl font-semibold text-white">
+
+            Linked Flights
+
+        </h3>
+
+        @if(linkedFlights.length){
+
+            <div class="space-y-3">
+
+                @for(linked of linkedFlights; track linked.id){
+
+                    <div
+                        class="rounded-xl border border-slate-700 bg-slate-800 p-4">
+
+                        <div class="flex justify-between">
+
+                            <span class="font-semibold text-white">
+
+                                {{linked.calculatedCallsign}}
+
+                            </span>
+
+                            <span class="text-cyan-400">
+
+                                {{linked.flightPlanType}}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                }
+
+            </div>
+
+        } @else {
+
+            <p class="text-slate-500">
+
+                No linked flights available.
+
+            </p>
+
+        }
+
+    </div>
+
+</div>
